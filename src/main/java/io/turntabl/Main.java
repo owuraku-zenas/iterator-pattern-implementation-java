@@ -19,19 +19,23 @@ public class Main {
 
 
         location1.setNeighbors(Arrays.asList(location2, location6, location7));
-        location2.setNeighbors(Arrays.asList(location4, location5, location6));
+        location2.setNeighbors(Arrays.asList(location4, location5));
         location5.setNeighbors(Arrays.asList(location3, location7));
         location7.setNeighbors(Arrays.asList(location1));
 
 
 
         GraphIterator<String> bfs = location1.createBFSIterator();
+
+
         System.out.println("BFS");
+
         while (bfs.hasNext()) {
             System.out.println(bfs.getNext());
         }
 
-        DepthFirstSearchIterator<String> dfs = (DepthFirstSearchIterator<String>) location1.createDFSIterator();
+//        DepthFirstSearchIterator<String> dfs = (DepthFirstSearchIterator<String>) location1.createDFSIterator();
+        GraphIterator<String> dfs = location1.createDFSIterator();
         System.out.println("\nDFS");
         while (dfs.hasNext()) {
             System.out.println(dfs.getNext());
