@@ -9,27 +9,16 @@ import java.util.List;
 
 public class Vertex<E> implements IterableGraph<E> {
     private final E data;
-    private boolean visited;
     private List<Vertex<E>> neighbors;
 
     public Vertex(E data) {
         this.data = data;
-        this.visited = false;
         this.neighbors = new LinkedList<>();
     }
 
     public E getData() {
         return data;
     }
-
-    public boolean isVisited() {
-        return visited;
-    }
-
-    public void setVisited(boolean visited) {
-        this.visited = visited;
-    }
-
     public List<Vertex<E>> getNeighbors() {
         return neighbors;
     }

@@ -2,13 +2,11 @@ package io.turntabl.iterator;
 
 import io.turntabl.collection.Vertex;
 
-import java.util.Collections;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class DepthFirstSearchIterator<E> implements GraphIterator<E> {
     private Deque<Vertex<E>> stack = new LinkedList<>();
+    private List<Vertex<E>> visitedVertices = new ArrayList<>();
     private final Vertex<E> startNode;
 
     public DepthFirstSearchIterator(Vertex<E> startNode) {
@@ -26,8 +24,8 @@ public class DepthFirstSearchIterator<E> implements GraphIterator<E> {
         try {
             Vertex<E> current = stack.pop();
             if (current == null) return null;
-            if(!current.isVisited()) {
-                current.setVisited(true);
+            if(!visitedVertices.contains(current)) {
+                visitedVertices.add(current);
                 Collections.reverse(current.getNeighbors());
                 current.getNeighbors().forEach(stack::push);
                 return current.getData();
